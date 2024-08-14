@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.custom-age-calculate {
+  max-width: 500px;
+  margin: auto;
+}
+
+.custom-age-calculate .calculate-container {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+.custom-age-calculate .calculate-container .form-group {
+  margin-bottom: 15px;
+}
+
+.custom-age-calculate .calculate-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+.custom-age-calculate .calculate-container input[type="date"],
+.custom-age-calculate .calculate-container input[type="button"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.custom-age-calculate .results {
+  background-color: #e9ffe9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.custom-age-calculate .results div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  align-items: center;
+  padding: 10px 20px;
+}
+.custom-age-calculate .results div:nth-child(odd) {
+  background-color: #ccc !important;
+}
+.custom-age-calculate .calculate-main-result {
+  padding: 0 !important;
+}
+
+.custom-age-calculate .copy-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #ccc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.custom-age-calculate .copy-button.copy {
+  background-color: #45a049;
+}
+.custom-age-calculate .copy-button:hover {
+  background-color: #45a049;
+}
+
+.custom-age-calculate .hidden {
+  display: none;
+}
