@@ -7,36 +7,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="custom-age-calculate">
-      <div class="calculate-container">
-        <div class="form-group">
-          <label for="birth-date">Birth date</label>
-          <input type="date" id="birth-date" required />
-        </div>
-        <div class="form-group">
-          <label for="current-date">Calculate age as of</label>
-          <input type="date" id="current-date" required />
-        </div>
-        <input
-          type="button"
-          id="calculate-button"
-          value="Calculate age"
-          onclick="calculateAge()"
-          disabled
-        />
-      </div>
+    <div class="container">
+      <h1>Age Calculator</h1>
 
-      <div class="results hidden" id="results">
-        <div id="chronological-age"></div>
-        <div id="running-age"></div>
-        <div id="age-in-years"></div>
-        <div id="age-in-months"></div>
-        <div id="age-in-weeks"></div>
-        <div id="age-in-days"></div>
-        <div id="days-until-next-birthday"></div>
+      <label for="birth-date">Birth Date:</label>
+      <input type="date" id="birth-date" />
+
+      <label for="current-date">Current Date:</label>
+      <input type="date" id="current-date" />
+
+      <button id="calculate-button" onclick="calculateAge()" disabled>
+        Calculate Age
+      </button>
+
+      <div id="results" class="hidden">
+        <p id="chronological-age"></p>
+        <p id="running-age"></p>
+        <p id="age-in-years"></p>
+        <p id="age-in-months"></p>
+        <p id="age-in-weeks"></p>
+        <p id="age-in-days"></p>
+        <p id="age-in-hours"></p>
+        <p id="age-in-minutes"></p>
+        <p id="age-in-seconds"></p>
+        <p id="days-until-next-birthday"></p>
       </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/calculateAge.js"></script>
+    <script src="scripts/main.js"></script>
   </body>
 </html>

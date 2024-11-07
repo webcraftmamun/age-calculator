@@ -1,75 +1,161 @@
+/* Basic Reset */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-}
-
-.custom-age-calculate {
-  max-width: 500px;
-  margin: auto;
-}
-
-.custom-age-calculate .calculate-container {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  padding: 20px;
-}
-.custom-age-calculate .calculate-container .form-group {
-  margin-bottom: 15px;
-}
-
-.custom-age-calculate .calculate-container label {
-  display: block;
-  margin-bottom: 5px;
-}
-.custom-age-calculate .calculate-container input[type="date"],
-.custom-age-calculate .calculate-container input[type="button"] {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0 10px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.custom-age-calculate .results {
-  background-color: #e9ffe9;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-.custom-age-calculate .results div {
+  background: linear-gradient(135deg, #1e1e30, #38395d);
+  color: #f0f0f0;
   display: flex;
-  justify-content: space-between;
-  font-size: 14px;
   align-items: center;
-  padding: 10px 20px;
-}
-.custom-age-calculate .results div:nth-child(odd) {
-  background-color: #ccc !important;
-}
-.custom-age-calculate .calculate-main-result {
-  padding: 0 !important;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 50px 0;
 }
 
-.custom-age-calculate .copy-button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  background-color: #ccc;
-  color: white;
+.container {
+  width: 100%;
+  max-width: 500px;
+  background-color: #2b2d42;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  font-size: 28px;
+  color: #ff79c6;
+  margin-bottom: 25px;
+  text-shadow: 0 3px 10px rgba(255, 121, 198, 0.7);
+}
+
+/* Input Labels */
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #8be9fd;
+  text-align: left;
+}
+
+/* Input Fields */
+input[type="date"] {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border: 2px solid #6272a4;
+  border-radius: 8px;
+  background-color: #44475a;
+  color: #f0f0f0;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input[type="date"]:focus {
+  border-color: #ff79c6;
+  outline: none;
+}
+
+/* Calculate Button */
+#calculate-button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 15px;
+  background-color: #50fa7b;
+  color: #282a36;
+  font-size: 18px;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-}
-.custom-age-calculate .copy-button.copy {
-  background-color: #45a049;
-}
-.custom-age-calculate .copy-button:hover {
-  background-color: #45a049;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.custom-age-calculate .hidden {
+#calculate-button:disabled {
+  background-color: #6272a4;
+  cursor: not-allowed;
+}
+
+#calculate-button:hover:not(:disabled) {
+  background-color: #3ae278;
+  transform: scale(1.05);
+}
+
+/* Results Section */
+#results {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #44475a;
+  border: 1px solid #6272a4;
+  border-radius: 8px;
+  text-align: left;
+}
+
+#results p {
+  font-size: 15px;
+  margin-bottom: 15px;
+  color: #f8f8f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Copy Button */
+.copy-button {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #282a36;
+  background-color: #ffb86c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.copy-button:hover {
+  background-color: #ff9a5c;
+  transform: scale(1.1);
+}
+
+/* Hidden Results */
+.hidden {
   display: none;
+}
+
+/* Mobile Responsive Styling */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input[type="date"] {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  #calculate-button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  #results p {
+    font-size: 14px;
+  }
+
+  .copy-button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
 }

@@ -1,20 +1,3 @@
-document.getElementById("current-date").valueAsDate = new Date();
-
-window.onload = function () {
-  loadResultsFromLocal();
-};
-
-function checkInputs() {
-  const birthDateValue = document.getElementById("birth-date").value;
-  const currentDateValue = document.getElementById("current-date").value;
-  const calculateButton = document.getElementById("calculate-button");
-
-  calculateButton.disabled = !birthDateValue || !currentDateValue;
-}
-
-document.getElementById("birth-date").addEventListener("input", checkInputs);
-document.getElementById("current-date").addEventListener("input", checkInputs);
-
 function calculateAge() {
   const birthDate = new Date(document.getElementById("birth-date").value);
   const currentDate = new Date(document.getElementById("current-date").value);
@@ -53,6 +36,11 @@ function calculateAge() {
   const chronologicalAge = `${ageInYears} years, ${ageInMonths} months, and ${ageInDays} days`;
   const runningAge = `${ageInYears + 1} years old`;
 
+  // Calculate age in hours, minutes, and seconds
+  const ageInHours = ageInTotalDays * 24;
+  const ageInMinutes = ageInTotalDays * 24 * 60;
+  const ageInSeconds = ageInTotalDays * 24 * 60 * 60;
+
   const nextBirthday = new Date(
     currentDate.getFullYear(),
     birthDate.getMonth(),
@@ -65,6 +53,7 @@ function calculateAge() {
     (nextBirthday - currentDate) / (1000 * 60 * 60 * 24)
   );
 
+  // Update results display
   updateResults(
     "chronological-age",
     `Chronological age: ${chronologicalAge}`,
@@ -83,6 +72,17 @@ function calculateAge() {
     `Age in days: ${ageInTotalDays}`,
     ageInTotalDays
   );
+  updateResults("age-in-hours", `Age in hours: ${ageInHours}`, ageInHours);
+  updateResults(
+    "age-in-minutes",
+    `Age in minutes: ${ageInMinutes}`,
+    ageInMinutes
+  );
+  updateResults(
+    "age-in-seconds",
+    `Age in seconds: ${ageInSeconds}`,
+    ageInSeconds
+  );
   updateResults(
     "days-until-next-birthday",
     `Days until next birthday: ${daysUntilNextBirthday}`,
@@ -98,7 +98,10 @@ function calculateAge() {
     ageInMonthsTotal,
     ageInWeeks,
     ageInTotalDays,
-    daysUntilNextBirthday
+    daysUntilNextBirthday,
+    ageInHours,
+    ageInMinutes,
+    ageInSeconds
   );
 }
 
@@ -116,68 +119,4 @@ function copyToClipboard(text) {
     .catch((err) => {
       alert("Failed to copy text: ", err.message);
     });
-}
-
-function saveResultsToLocal(
-  chronologicalAge,
-  runningAge,
-  ageInYears,
-  ageInMonths,
-  ageInWeeks,
-  ageInDays,
-  daysUntilNextBirthday
-) {
-  const results = {
-    chronologicalAge,
-    runningAge,
-    ageInYears,
-    ageInMonths,
-    ageInWeeks,
-    ageInDays,
-    daysUntilNextBirthday,
-  };
-  localStorage.setItem("ageCalculatorResults", JSON.stringify(results));
-}
-
-function loadResultsFromLocal() {
-  const results = JSON.parse(localStorage.getItem("ageCalculatorResults"));
-  if (results) {
-    updateResults(
-      "chronological-age",
-      `Chronological age: ${results.chronologicalAge}`,
-      results.chronologicalAge
-    );
-    updateResults(
-      "running-age",
-      `Running age: ${results.runningAge}`,
-      results.runningAge
-    );
-    updateResults(
-      "age-in-years",
-      `Age in years: ${results.ageInYears}`,
-      results.ageInYears
-    );
-    updateResults(
-      "age-in-months",
-      `Age in months: ${results.ageInMonths}`,
-      results.ageInMonths
-    );
-    updateResults(
-      "age-in-weeks",
-      `Age in weeks: ${results.ageInWeeks}`,
-      results.ageInWeeks
-    );
-    updateResults(
-      "age-in-days",
-      `Age in days: ${results.ageInDays}`,
-      results.ageInDays
-    );
-    updateResults(
-      "days-until-next-birthday",
-      `Days until next birthday: ${results.daysUntilNextBirthday}`,
-      results.daysUntilNextBirthday
-    );
-
-    document.getElementById("results").classList.remove("hidden");
-  }
 }
